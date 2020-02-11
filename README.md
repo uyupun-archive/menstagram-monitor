@@ -23,3 +23,11 @@ $ make ps           // コンテナの状態(プロセス)の確認
 $ make prometheus   // Prometheusの起動
 $ make grafana      // Grafanaの起動
 ```
+
+### Grafana
+初期状態の認証情報は以下の通り.
+
+```
+username: admin
+password: admin
+```
