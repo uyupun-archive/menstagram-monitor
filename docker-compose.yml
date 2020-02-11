@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  prometheus:
+    container_name: menstagram_monitor_prometheus
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    command: "--config.file=/etc/prometheus/prometheus.yml"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    environment:
+      TZ: 'Asia/Tokyo'
+    networks:
+      - menstagram
+  exporter:
+    container_name: menstagram_monitor_exporter
+    image: prom/node-exporter:latest
+    ports:
+      - 9092:9100
+    environment:
+      TZ: 'Asia/Tokyo'
+    networks:
+      - menstagram
+  grafana:
+    container_name: menstagram_monitor_grafana
+    image: grafana/grafana
+    ports:
+      - 9091:3000
+    environment:
+      TZ: 'Asia/Tokyo'
+    networks:
+      - menstagram
+
+networks:
+  menstagram:
+    external: true

@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'menstagram-monitor'
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets:
+        -  menstagram_monitor_prometheus:9090
+        -  menstagram_monitor_exporter:9100
