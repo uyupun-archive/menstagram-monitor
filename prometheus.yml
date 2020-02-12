@@ -8,5 +8,9 @@ scrape_configs:
   - job_name: 'prometheus'
     static_configs:
       - targets:
-        -  menstagram_monitor_prometheus:9090
-        -  menstagram_monitor_exporter:9100
+        - menstagram_monitor_prometheus:9090
+
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets:
+        - menstagram_monitor_cadvisor:8080

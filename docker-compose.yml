@@ -1,6 +1,18 @@
 version: '3'
 
 services:
+  grafana:
+    container_name: menstagram_monitor_grafana
+    image: grafana/grafana
+    ports:
+      - 3001:3000
+    environment:
+      TZ: 'Asia/Tokyo'
+    depends_on:
+      - prometheus
+    networks:
+      - menstagram
+
   prometheus:
     container_name: menstagram_monitor_prometheus
     image: prom/prometheus
@@ -11,22 +23,21 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
     environment:
       TZ: 'Asia/Tokyo'
+    depends_on:
+      - cadvisor
     networks:
       - menstagram
-  exporter:
-    container_name: menstagram_monitor_exporter
-    image: prom/node-exporter:latest
+
+  cadvisor:
+    container_name: menstagram_monitor_cadvisor
+    image: google/cadvisor:latest
     ports:
-      - 9092:9100
-    environment:
-      TZ: 'Asia/Tokyo'
-    networks:
-      - menstagram
-  grafana:
-    container_name: menstagram_monitor_grafana
-    image: grafana/grafana
-    ports:
-      - 9091:3000
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
     environment:
       TZ: 'Asia/Tokyo'
     networks:
