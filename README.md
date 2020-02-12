@@ -11,6 +11,9 @@ menstagram-monitorはMenstagramのモニタリングのためのリポジトリ�
 $ git clone https://github.com/uyupun/menstagram-monitor.git
 $ cd menstagram-monitor
 $ docker network create menstagram  // すでに作成している場合は実行しなくて良い
+$ cp Makefile.mac Makefile          // macOS環境
+$ cp Makefile.win Makefile          // Windows環境
+$ cp Makefile.linux Makefile        // Linux環境
 $ make init
 ```
 

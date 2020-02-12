@@ -1,0 +1,20 @@
+init:
+	docker-compose up -d
+
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
+
+ps:
+	docker-compose ps
+
+cadvisor:
+	xdg-open http://localhost:8080
+
+prometheus:
+	xdg-open http://localhost:9090/targets
+
+grafana:
+	xdg-open http://localhost:3001

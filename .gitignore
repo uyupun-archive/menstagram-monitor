@@ -1,1 +1,3 @@
+Makefile
 grafana-data/*
+!grafana-data/.gitkeep

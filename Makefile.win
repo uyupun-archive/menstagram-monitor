@@ -1,0 +1,20 @@
+init:
+	docker-compose up -d
+
+up:
+	docker-compose up -d
+
+down:
+	docker-compose down
+
+ps:
+	docker-compose ps
+
+cadvisor:
+	start http://localhost:8080
+
+prometheus:
+	start http://localhost:9090/targets
+
+grafana:
+	start http://localhost:3001
