@@ -20,8 +20,9 @@ $ make init
 $ make up           // コンテナの起動
 $ make down         // コンテナの終了
 $ make ps           // コンテナの状態(プロセス)の確認
-$ make prometheus   // Prometheusの起動
 $ make grafana      // Grafanaの起動
+$ make prometheus   // Prometheusの起動
+$ make cadvisor     // cAdvisorの起動
 ```
 
 ### Grafana
